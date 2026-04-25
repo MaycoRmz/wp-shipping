@@ -1,6 +1,4 @@
-/* =====================================================
-   BASE & TOKENS
-===================================================== */
+/* BASE */
 body {
   margin: 0;
   font-family: 'IBM Plex Sans', sans-serif;
@@ -8,19 +6,10 @@ body {
   color: #e5e7eb;
 }
 
-:root {
-  --accent: #22c55e;
-  --danger: #ef4444;
-  --card-bg: #030712;
-}
-
-/* =====================================================
-   HEADER
-===================================================== */
+/* HEADER */
 .site-header {
-  background: #020617;
-  border-bottom: 1px solid #111;
   padding: 1rem;
+  border-bottom: 1px solid #111;
 }
 
 .header-inner {
@@ -29,95 +18,64 @@ body {
   align-items: center;
 }
 
-.nav-link {
+/* NAV */
+.main-nav a {
+  margin-right: 1rem;
   color: white;
   text-decoration: none;
-  margin-left: 1rem;
 }
 
-/* =====================================================
-   HERO
-===================================================== */
-.hero {
-  padding: 4rem 2rem;
-  position: relative;
-}
-
-.hero-badge {
-  color: var(--accent);
-  letter-spacing: 0.2em;
-}
-
-.hero-headline {
-  font-family: 'Bebas Neue';
-  font-size: 3rem;
-}
-
-/* =====================================================
-   BUTTONS
-===================================================== */
-.btn {
-  padding: 0.8rem 1.5rem;
-  background: var(--accent);
-  color: black;
-  text-decoration: none;
-}
-
-/* =====================================================
-   SHIFT REPORTS
-===================================================== */
-.shift-report {
-  max-width: 1400px;
-  margin: auto;
-  padding: 2rem;
-}
-
-.report-block {
-  background: var(--card-bg);
+/* SECTIONS */
+.block {
+  background: #030712;
   padding: 1.5rem;
-  margin-bottom: 2rem;
+  margin: 1.5rem;
   border-radius: 10px;
 }
 
-.report-block.alert {
-  border-left: 4px solid var(--danger);
+.block.alert {
+  border-left: 4px solid #ef4444;
 }
 
+/* GRID */
 .grid {
   display: grid;
   gap: 1rem;
 }
+.grid-3 { grid-template-columns: repeat(3,1fr); }
+.grid-4 { grid-template-columns: repeat(4,1fr); }
 
-.grid-3 { grid-template-columns: repeat(3, 1fr); }
-.grid-4 { grid-template-columns: repeat(4, 1fr); }
-
-input {
+/* INPUTS */
+input, textarea, select {
+  width: 100%;
   background: #020617;
   border: 1px solid #111;
   color: white;
-  padding: 0.6rem;
+  padding: 0.5rem;
 }
 
-.report-table {
+/* TABLE */
+table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
 }
-
-.report-table th,
-.report-table td {
+td, th {
   border-bottom: 1px solid #111;
   padding: 0.5rem;
 }
 
-.empty {
-  text-align: center;
-  opacity: 0.6;
+/* BUTTONS */
+button {
+  background: #22c55e;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+button.danger {
+  background: #ef4444;
 }
 
-/* =====================================================
-   TV MODE
-===================================================== */
+/* TV MODE */
 body.tv-mode {
   font-size: 18px;
   background: black;
