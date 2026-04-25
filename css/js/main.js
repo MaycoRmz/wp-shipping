@@ -1,42 +1,29 @@
-/* ==========================================================
-   LIVE CLOCK
-========================================================== */
-const clock = document.getElementById('liveClock');
-setInterval(() => {
-  clock.textContent = new Date().toLocaleTimeString();
-}, 1000);
-
-
-/* ==========================================================
-   DATE & SHIFT
-========================================================== */
-const dateEl = document.getElementById('currentDate');
-if (dateEl) {
-  dateEl.textContent = new Date().toLocaleDateString();
+/* LIVE CLOCK */
+const clock = document.getElementById("liveClock");
+if (clock) {
+  setInterval(() => {
+    clock.textContent = new Date().toLocaleTimeString();
+  }, 1000);
 }
 
-
-/* ==========================================================
-   HERO CONTEXT (TIME-AWARE)
-========================================================== */
-const heroContext = document.getElementById('heroContext');
-if (heroContext) {
+/* HERO CONTEXT */
+const ctx = document.getElementById("heroContext");
+if (ctx) {
   const h = new Date().getHours();
-  heroContext.textContent =
-    h < 14 ? 'DAY SHIFT OPERATIONS' :
-    h < 22 ? 'AFTERNOON SHIFT OPERATIONS' :
-    'NIGHT SHIFT OPERATIONS';
+  ctx.textContent =
+    h < 14 ? "DAY SHIFT OPERATIONS" :
+    h < 22 ? "AFTERNOON SHIFT OPERATIONS" :
+    "NIGHT SHIFT OPERATIONS";
 }
 
+/* TV MODE */
+const toggle = document.getElementById("tvToggle");
+if (toggle) {
+  const enabled = localStorage.getItem("tv") === "true";
+  document.body.classList.toggle("tv-mode", enabled);
 
-/* ==========================================================
-   TV MODE TOGGLE (PERSISTENT)
-========================================================== */
-const tvToggle = document.getElementById('tvToggle');
-const savedTV = localStorage.getItem('tvMode') === 'true';
-
-document.body.classList.toggle('tv-mode', savedTV);
-
-tvToggle.addEventListener('click', () => {
-  const enabled = document.body.classList.toggle('tv-mode');
-  localStorage.set
+  toggle.onclick = () => {
+    const active = document.body.classList.toggle("tv-mode");
+    localStorage.setItem("tv", active);
+  };
+}
