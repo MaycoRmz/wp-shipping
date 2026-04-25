@@ -1,1 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOP Library</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
 
+<header class="site-header">
+  <div class="header-inner">
+    <h1>SOP LIBRARY</h1>
+    <a href="../index.html">Back</a>
+  </div>
+</header>
+
+<section class="sop-section">
+
+  <div class="block">
+    <h3>UPLOAD SOP (PDF / DOC)</h3>
+    <input type="file" id="sopFile">
+    <input type="text" id="sopName" placeholder="SOP Title">
+    <button onclick="addSOP()">Add SOP</button>
+  </div>
+
+  <div class="block">
+    <h3>AVAILABLE SOPs</h3>
+    <ul id="sopList"></ul>
+  </div>
+
+</section>
+
+<script src="../js/sops.js"></script>
+</body>
+</html>
