@@ -1,75 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- ="site-header">  <meta charset="UTF-8">
-  <div class="header-inner">
-    <h1 class="brand-title">SHIFT CHANGE REPORT</h1>
-    <a href="../index.html" class="nav-link">← BACK TO HUB</a>
-  </div>
-</header>
-
-<section class="shift-report">
-
-  <div class="shift-warning">
-    ⚠ This form must be completed before shift end and reviewed by the incoming supervisor.
-  </div>
-
-  <div class="report-block">
-    <h3>SHIFT INFORMATION</h3>
-
-    <div class="grid grid-4">
-      <input placeholder="Date">
-      <input placeholder="Shift Ending">
-      <input placeholder="Day / Night">
-      <input placeholder="Shift Time (06:00 – 18:00)">
-      <input placeholder="Outgoing Supervisor">
-      <input placeholder="Incoming Supervisor">
-      <input placeholder="Staff on Shift">
-      <input placeholder="Handoff Time">
-    </div>
-  </div>
-
-  <div class="report-block">
-    <h3>🚛 LOAD STATUS — CURRENT SHIFT</h3>
-    <table class="report-table">
-      <tr>
-        <th>Load</th><th>Trailer</th><th>Dock</th><th>Destination</th>
-        <th>Status</th><th>% Loaded</th><th>Notes</th>
-      </tr>
-      <tr><td colspan="7" class="empty">No loads entered</td></tr>
-    </table>
-  </div>
-
-  <div class="report-block alert">
-    <h3>⚡ OPEN ISSUES</h3>
-    <table class="report-table">
-      <tr>
-        <th>#</th><th>Description</th><th>Priority</th><th>Status</th><th>Notes</th>
-      </tr>
-      <tr><td colspan="5" class="empty">No open issues</td></tr>
-    </table>
-  </div>
-
-  <div class="report-block">
-    <h3>✍ SUPERVISOR SIGN‑OFF</h3>
-    <div class="grid grid-3">
-      <input placeholder="Outgoing Supervisor">
-      <input placeholder="Signature">
-      <input placeholder="Time Submitted">
-      <input placeholder="Incoming Supervisor">
-      <input placeholder="Signature">
-      <input placeholder="Time Acknowledged">
-    </div>
-  </div>
-
-</section>
-
-<script src="../js/main.js"></script>
-</body>
-</html>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Shift Change Report</title>
   <link rel="stylesheet" href="../css/main.css">
+
+  <style>
+    @media print {
+      body { background: white; color: black; }
+      .no-print { display: none; }
+      input, textarea, select { border: none; }
+    }
+  </style>
 </head>
 <body>
 
+<header class="site-header no-print">
+  <div class="header-inner">
+    <h1>SHIFT CHANGE REPORT</h1>
+    <div>
+      <button onclick="window.print()">Print / PDF</button>
+      <button onclick="exportCSV()">Export CSV</button>
+      <a href="../index.html">Back</a>
+    </div>
+  </div>
+</header>
+
+<section class="shift-report" id="reportForm">
+
+  <div class="notice">
+    ⚠ Must be completed before shift end and reviewed by incoming supervisor.
+  </div>
+
+  <!-- SHIFT INFO -->
+  <section class="block">
+    <h3>SHIFT INFORMATION</h3>
+    <div class="grid grid-4">
+      <input placeholder="Date" data-field>
+      <input placeholder="Day / Night" data-field>
+      <input placeholder="Shift Time" data-field>
+      <input placeholder="Handoff Time" data-field>
+      <input placeholder="Outgoing Supervisor" data-field>
+      <input placeholder="Incoming Supervisor" data-field>
+      <input placeholder="Staff on Shift" data-field>
+      <input placeholder="Staff Actual" data-field>
+    </div>
+  </section>
+
+  <!-- LOADS -->
+  <section class="block">
+    <h3>LOAD STATUS</h3>
+    <table id="loadsTable">
+      <thead>
+        <tr>
+          <th>Load</th>
+          <th>Trailer</th>
+          <th>Dock</th>
+          <th>Destination</th>
+          <th>Status</th>
+          <th>%</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <button class="no-print" onclick="addRow('loadsTable')">Add Load</button>
+  </section>
+
+  <!-- ISSUES -->
+  <section class="block alert">
+    <h3>OPEN ISSUES</h3>
+    <table id="issuesTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Description</th>
+          <th>Priority</th>
+          <th>Assigned</th>
+          <th>Status</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <button class="no-print" onclick="addRow('issuesTable', true)">Add Issue</button>
+  </section>
+
+  <!-- SIGN OFF -->
+  <section class="block">
+    <h3>SIGN OFF</h3>
+    <div class="grid grid-3">
+      <input placeholder="Outgoing Supervisor" data-field>
+      <input placeholder="Signature">
+      <input placeholder="Time Submitted">
+      <input placeholder="Incoming Supervisor" data-field>
+      <input placeholder="Signature">
+      <input placeholder="Time Acknowledged">
+    </div>
+
+    <button class="no-print danger" onclick="lockReport()">LOCK REPORT</button>
+  </section>
+
+</section>
+
+<script src="../js/shift-reports.js"></script>
+</body>
+</html>
