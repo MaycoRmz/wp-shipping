@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Shift Change Report</title>
-  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/main.css" />
 
   <style>
     @media print {
@@ -20,20 +20,20 @@
   <div class="header-inner">
     <h1>SHIFT CHANGE REPORT</h1>
     <div>
-      <button onclick="window.print()">Print / PDF</button>
-      <button onclick="exportCSV()">Export CSV</button>
-      <a href="../index.html">Back</a>
+      <button onclick="window.print()">🖨 Print / PDF</button>
+      <button onclick="exportCSV()">⬇ Export CSV</button>
+      <a href="../index.html">← Hub</a>
     </div>
   </div>
 </header>
 
 <section class="shift-report" id="reportForm">
 
-  <div class="notice">
+  <p class="notice">
     ⚠ Must be completed before shift end and reviewed by incoming supervisor.
-  </div>
+  </p>
 
-  <!-- SHIFT INFO -->
+  <!-- ================= SHIFT INFO ================= -->
   <section class="block">
     <h3>SHIFT INFORMATION</h3>
     <div class="grid grid-4">
@@ -48,9 +48,10 @@
     </div>
   </section>
 
-  <!-- LOADS -->
+  <!-- ================= LOADS ================= -->
   <section class="block">
-    <h3>LOAD STATUS</h3>
+    <h3>🚛 LOAD STATUS</h3>
+
     <table id="loadsTable">
       <thead>
         <tr>
@@ -61,16 +62,22 @@
           <th>Status</th>
           <th>%</th>
           <th>Notes</th>
+          <th class="no-print">✖</th>
         </tr>
       </thead>
       <tbody></tbody>
     </table>
-    <button class="no-print" onclick="addRow('loadsTable')">Add Load</button>
+
+    <div class="no-print">
+      <button onclick="addRow('loadsTable')">➕ Add Load</button>
+      <button onclick="undoDelete()">↩ Undo Delete</button>
+    </div>
   </section>
 
-  <!-- ISSUES -->
+  <!-- ================= ISSUES ================= -->
   <section class="block alert">
-    <h3>OPEN ISSUES</h3>
+    <h3>⚡ OPEN ISSUES</h3>
+
     <table id="issuesTable">
       <thead>
         <tr>
@@ -80,16 +87,22 @@
           <th>Assigned</th>
           <th>Status</th>
           <th>Notes</th>
+          <th class="no-print">✖</th>
         </tr>
       </thead>
       <tbody></tbody>
     </table>
-    <button class="no-print" onclick="addRow('issuesTable', true)">Add Issue</button>
+
+    <div class="no-print">
+      <button onclick="addRow('issuesTable', true)">➕ Add Issue</button>
+      <button onclick="undoDelete()">↩ Undo Delete</button>
+    </div>
   </section>
 
-  <!-- SIGN OFF -->
+  <!-- ================= SIGN OFF ================= -->
   <section class="block">
-    <h3>SIGN OFF</h3>
+    <h3>SIGN‑OFF</h3>
+
     <div class="grid grid-3">
       <input placeholder="Outgoing Supervisor" data-field>
       <input placeholder="Signature">
@@ -99,7 +112,7 @@
       <input placeholder="Time Acknowledged">
     </div>
 
-    <button class="no-print danger" onclick="lockReport()">LOCK REPORT</button>
+    <button class="danger no-print" onclick="lockReport()">🔒 LOCK REPORT</button>
   </section>
 
 </section>
