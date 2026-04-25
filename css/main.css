@@ -1,19 +1,13 @@
-button {
-  cursor: pointer;
-}
-button.danger {
-  background: #ef4444;
-}
-``
-/* BASE */
-body {
+/* =====================================================/* =================================================body {
   margin: 0;
   font-family: 'IBM Plex Sans', sans-serif;
   background: #020617;
   color: #e5e7eb;
 }
 
-/* HEADER */
+/* =====================================================
+   HEADER
+===================================================== */
 .site-header {
   padding: 1rem;
   border-bottom: 1px solid #111;
@@ -25,14 +19,18 @@ body {
   align-items: center;
 }
 
-/* NAV */
+/* =====================================================
+   NAV
+===================================================== */
 .main-nav a {
   margin-right: 1rem;
   color: white;
   text-decoration: none;
 }
 
-/* SECTIONS */
+/* =====================================================
+   SECTIONS / BLOCKS
+===================================================== */
 .block {
   background: #030712;
   padding: 1.5rem;
@@ -44,16 +42,23 @@ body {
   border-left: 4px solid #ef4444;
 }
 
-/* GRID */
+/* =====================================================
+   GRID LAYOUTS
+===================================================== */
 .grid {
   display: grid;
   gap: 1rem;
 }
-.grid-3 { grid-template-columns: repeat(3,1fr); }
-.grid-4 { grid-template-columns: repeat(4,1fr); }
 
-/* INPUTS */
-input, textarea, select {
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* =====================================================
+   INPUTS
+===================================================== */
+input,
+textarea,
+select {
   width: 100%;
   background: #020617;
   border: 1px solid #111;
@@ -61,29 +66,40 @@ input, textarea, select {
   padding: 0.5rem;
 }
 
-/* TABLE */
+/* =====================================================
+   TABLES
+===================================================== */
 table {
   width: 100%;
   border-collapse: collapse;
 }
-td, th {
+
+td,
+th {
   border-bottom: 1px solid #111;
   padding: 0.5rem;
 }
 
-/* BUTTONS */
+/* =====================================================
+   BUTTONS
+===================================================== */
 button {
   background: #22c55e;
   border: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
 }
+
 button.danger {
   background: #ef4444;
 }
 
-/* TV MODE */
+/* =====================================================
+   TV MODE
+===================================================== */
 body.tv-mode {
   font-size: 18px;
   background: black;
 }
+   BASE
+===================================================== */
